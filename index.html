@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>พื้นที่ใจดี | โปรแกรมส่งเสริมสุขภาพจิต</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Noto Sans Thai", "Tahoma", sans-serif;
+      background: #faf7ff;
+      color: #332b3f;
+      line-height: 1.7;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      border-bottom: 1px solid #eee5f7;
+      padding: 14px 6%;
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      color: #7048a8;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      font-size: 15px;
+    }
+
+    .nav-links a:hover {
+      color: #7048a8;
+    }
+
+    .hero {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 6% 65px;
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #eee5ff;
+      color: #7048a8;
+      padding: 7px 15px;
+      border-radius: 30px;
+      font-size: 14px;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+
+    h1 {
+      font-size: clamp(36px, 6vw, 58px);
+      line-height: 1.2;
+      color: #4c3565;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #655b6d;
+      max-width: 650px;
+      margin-bottom: 28px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #7048a8;
+      color: white;
+      padding: 13px 25px;
+      border-radius: 14px;
+      font-weight: 700;
+      transition: 0.2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      opacity: 0.92;
+    }
+
+    .hero-art {
+      min-height: 270px;
+      border-radius: 35px;
+      background: #eee5ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 120px;
+      box-shadow: 0 15px 40px rgba(112,72,168,0.12);
+    }
+
+    section {
+      padding: 65px 6%;
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 32px;
+      color: #4c3565;
+      margin-bottom: 12px;
+    }
+
+    .section-desc {
+      text-align: center;
+      color: #766c7e;
+      margin-bottom: 35px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #eee5f7;
+      border-radius: 20px;
+      padding: 25px 20px;
+      box-shadow: 0 8px 25px rgba(55,35,75,0.06);
+      transition: 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(55,35,75,0.1);
+    }
+
+    .icon {
+      font-size: 38px;
+      margin-bottom: 10px;
+    }
+
+    .card h3 {
+      color: #4c3565;
+      margin-bottom: 7px;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #746b7b;
+      margin-bottom: 17px;
+    }
+
+    .card-link {
+      color: #7048a8;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .program {
+      background: #f1ebfa;
+    }
+
+    .program-list {
+      max-width: 800px;
+      margin: 30px auto 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .program-item {
+      background: white;
+      padding: 15px 20px;
+      border-radius: 14px;
+      border: 1px solid #e7dcf3;
+    }
+
+    .program-item strong {
+      color: #7048a8;
+    }
+
+    .help-box {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      border-radius: 22px;
+      padding: 30px;
+      border: 1px solid #eee5f7;
+      text-align: center;
+    }
+
+    .help-box p {
+      color: #665d6c;
+      margin: 10px 0;
+    }
+
+    footer {
+      background: #4c3565;
+      color: white;
+      text-align: center;
+      padding: 25px 6%;
+      font-size: 14px;
+    }
+
+    @media (max-width: 850px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 55px;
+      }
+
+      .hero-art {
+        min-height: 210px;
+        font-size: 90px;
+      }
+
+      .cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .nav-links {
+        gap: 12px;
+        font-size: 13px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .navbar {
+        padding: 12px 5%;
+      }
+
+      .nav-inner {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .hero {
+        padding: 45px 5% 50px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      section {
+        padding: 50px 5%;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title {
+        font-size: 27px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="#" class="logo">💜 พื้นที่ใจดี</a>
+
+      <div class="nav-links">
+        <a href="#home">หน้าแรก</a>
+        <a href="#activities">กิจกรรม</a>
+        <a href="#program">เกี่ยวกับโปรแกรม</a>
+        <a href="#help">ช่วยเหลือ</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <section class="hero" id="home">
+      <div>
+        <span class="tag">Mental Health Promotion Program</span>
+
+        <h1>วันนี้ใจของเธอ<br>เป็นอย่างไรบ้าง?</h1>
+
+        <p>
+          พื้นที่เล็ก ๆ สำหรับสำรวจความรู้สึก จัดการความเครียด
+          และดูแลสุขภาพจิตของตัวเองผ่านกิจกรรมที่ทำได้ง่ายบนเว็บเพจ
+        </p>
+
+        <a href="#activities" class="btn">เริ่มดูแลใจของฉัน →</a>
+      </div>
+
+      <div class="hero-art" aria-label="ภาพประกอบ">
+        🐉
+      </div>
+    </section>
+
+    <section id="activities">
+      <div class="section-inner">
+        <h2 class="section-title">กิจกรรมดูแลใจ</h2>
+
+        <p class="section-desc">
+          เลือกกิจกรรมที่อยากทำได้ตามความรู้สึกของเธอ
+        </p>
+
+        <div class="cards">
+
+          <a class="card"
+             href="https://docs.google.com/forms/d/e/1FAIpQLSfw2rivqtjK11wNG3XEgWhXmsWLgPtLPJJLOClC0X_soNfvHA/viewform"
+             target="_blank" rel="noopener">
+            <div class="icon">🌈</div>
+            <h3>Mood Check</h3>
+            <p>ลองสำรวจอารมณ์และความรู้สึกของตัวเองในวันนี้</p>
+            <span class="card-link">เริ่มทำกิจกรรม →</span>
+          </a>
+
+          <a class="card"
+             href="https://docs.google.com/forms/d/e/1FAIpQLSepnNwsrmyEbcKlOijji85DO9BNGpjF9N2aRrNzq3AX3jdtYw/viewform"
+             target="_blank" rel="noopener">
+            <div class="icon">✍️</div>
+            <h3>Expressive Writing</h3>
+            <p>เขียนระบายความรู้สึกและสิ่งที่อยู่ในใจ</p>
+            <span class="card-link">เริ่มเขียน →</span>
+          </a>
+
+          <a class="card"
+             href="https://docs.google.com/forms/d/e/1FAIpQLScDoe7FdBheGf1h1-MnUkg0Beim-KDFoNsBwMhuwJlU7xLOVg/viewform"
+             target="_blank" rel="noopener">
+            <div class="icon">🧘</div>
+            <h3>Relaxation</h3>
+            <p>เรียนรู้วิธีผ่อนคลายเพื่อช่วยจัดการความเครียด</p>
+            <span class="card-link">เริ่มผ่อนคลาย →</span>
+          </a>
+
+          <a class="card"
+             href="https://docs.google.com/forms/d/e/1FAIpQLSdVI5wPQ_zxOsq6DSNTit0gZWNQrgLoeM-eN0LE-jQiaWeS9w/viewform"
+             target="_blank" rel="noopener">
+            <div class="icon">💬</div>
+            <h3>Chatbot</h3>
+            <p>พูดคุยและรับคำแนะนำเกี่ยวกับการดูแลสุขภาพจิต</p>
+            <span class="card-link">เริ่มพูดคุย →</span>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="program" id="program">
+      <div class="section-inner">
+        <h2 class="section-title">องค์ประกอบของโปรแกรม</h2>
+
+        <p class="section-desc">
+          โปรแกรมส่งเสริมสุขภาพจิตผ่านเว็บเพจประกอบด้วยกิจกรรมหลัก
+        </p>
+
+        <div class="program-list">
+          <div class="program-item"><strong>1. Mood Check</strong> — สำรวจอารมณ์และความรู้สึก</div>
+          <div class="program-item"><strong>2. Stress Assessment</strong> — ประเมินระดับความเครียด</div>
+          <div class="program-item"><strong>3. Expressive Writing</strong> — เขียนและถ่ายทอดความรู้สึก</div>
+          <div class="program-item"><strong>4. Relaxation</strong> — ฝึกกิจกรรมเพื่อการผ่อนคลาย</div>
+          <div class="program-item"><strong>5. Study Planner</strong> — ช่วยวางแผนการเรียนและจัดการเวลา</div>
+          <div class="program-item"><strong>6. Knowledge &amp; Advice</strong> — ความรู้และคำแนะนำด้านสุขภาพจิต</div>
+          <div class="program-item"><strong>7. Chatbot</strong> — พูดคุยและรับคำแนะนำ</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="help">
+      <div class="section-inner">
+        <h2 class="section-title">ถ้าวันนี้รู้สึกไม่ไหว 💜</h2>
+
+        <div class="help-box">
+          <p>
+            ไม่จำเป็นต้องจัดการทุกอย่างด้วยตัวเอง
+            ลองพูดคุยกับคนที่ไว้ใจ เช่น ผู้ปกครอง ครู หรือครูแนะแนว
+          </p>
+
+          <p>
+            หากมีความรู้สึกไม่ปลอดภัยหรือคิดว่าจะทำร้ายตัวเอง
+            ควรขอความช่วยเหลือจากผู้ใหญ่ที่ไว้ใจหรือบุคลากรทางสุขภาพโดยเร็ว
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>พื้นที่ใจดี 💜 โปรแกรมส่งเสริมสุขภาพจิตผ่านเว็บเพจในการจัดการความเครียด</p>
+  </footer>
+
+</body>
+</html>
